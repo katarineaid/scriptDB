@@ -1,0 +1,34 @@
+-- Table: public.layer
+
+-- DROP TABLE public.layer;
+CREATE SEQUENCE layer_id_seq;
+CREATE TABLE public.layer
+(
+    id integer NOT NULL DEFAULT nextval('"layer_id_seq"'::regclass),
+    geom geometry(LineString),
+    "GUID" uuid,
+    stroke character varying(255) COLLATE pg_catalog."default",
+    "number" double precision,
+    "createdAt" timestamp with time zone NOT NULL,
+    "updatedAt" timestamp with time zone NOT NULL,
+    CONSTRAINT "layer_pkey" PRIMARY KEY (id)
+)
+
+WITH (
+    OIDS = FALSE
+)
+TABLESPACE pg_default;
+
+ALTER TABLE public.layer
+    OWNER to postgres;
+    
+
+-- Trigger: guidtrigger
+
+-- DROP TRIGGER guidtrigger ON public.layer;
+
+CREATE TRIGGER guidtrigger
+    BEFORE INSERT
+    ON public.layer
+    FOR EACH ROW
+    EXECUTE PROCEDURE public."uuidFunction"();
