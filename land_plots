@@ -6,7 +6,7 @@ CREATE TABLE public.land_plots
 (
     id integer NOT NULL DEFAULT nextval('land_plots_id_seq'::regclass),
     geom geometry(Polygon),
-    GUID uuid,
+     "GUID" uuid,
     NAO character varying(255) COLLATE pg_catalog."default",
     NRH character varying(255) COLLATE pg_catalog."default",
     NameRH character varying(255) COLLATE pg_catalog."default",
