@@ -1,0 +1,45 @@
+-- Table: public.OKS
+
+-- DROP TABLE public.OKS;
+CREATE SEQUENCE OKS_id_seq;
+CREATE TABLE public.OKS
+(
+    id integer NOT NULL DEFAULT nextval('OKS_id_seq'::regclass),
+    geom geometry(Polygon),
+    GUID uuid,
+    NAO character varying(255) COLLATE pg_catalog."default",
+    NRH character varying(255) COLLATE pg_catalog."default",
+    NameRH character varying(255) COLLATE pg_catalog."default",
+    PurposeAO character varying(255) COLLATE pg_catalog."default",
+    TypePurposeAO character varying(255) COLLATE pg_catalog."default",
+    CadastralNumber character varying(255) COLLATE pg_catalog."default",
+    Area double precision,
+    Floors double precision,
+    OriginalCostValue double precision,
+    OKOGY character varying(255) COLLATE pg_catalog."default",
+    Address character varying(255) COLLATE pg_catalog."default",
+    CurrentRestrictions character varying(255) COLLATE pg_catalog."default",
+    RNFI character varying(255) COLLATE pg_catalog."default",
+    OfficeFPA character varying(255) COLLATE pg_catalog."default",
+    createdAt timestamp with time zone NOT NULL,
+    updatedAt timestamp with time zone NOT NULL,
+    CONSTRAINT OKS PRIMARY KEY (NAO)
+)
+
+WITH (
+    OIDS = FALSE
+)
+TABLESPACE pg_default;
+
+ALTER TABLE public.OKS
+    OWNER to postgres;
+
+-- Trigger: guidtrigger
+
+-- DROP TRIGGER guidtrigger ON public.OKS;
+
+CREATE TRIGGER guidtrigger
+    BEFORE INSERT
+    ON public.OKS
+    FOR EACH ROW
+    EXECUTE PROCEDURE public."uuidFunction"();
