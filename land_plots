@@ -2,27 +2,28 @@
 
 -- DROP TABLE public.land_plots;
 
-CREATE SEQUENCE land_plots_id_seq;
 CREATE TABLE public.land_plots
 (
     id integer NOT NULL DEFAULT nextval('land_plots_id_seq'::regclass),
     geom geometry(Polygon),
-    guid uuid,
-    NAO text COLLATE pg_catalog."default" NOT NULL,
-    NRH text COLLATE pg_catalog."default" NOT NULL,
-    NameRH text COLLATE pg_catalog."default" NOT NULL,
-    NameAO text COLLATE pg_catalog."default" NOT NULL,
-    LandUseClass text COLLATE pg_catalog."default" NOT NULL,
-    PermittedUse text COLLATE pg_catalog."default" NOT NULL,
-    CadastralNumber text COLLATE pg_catalog."default" NOT NULL,
-    Area character varying(255) COLLATE pg_catalog."default" NOT NULL,
-    OriginalCostValue character varying(255) COLLATE pg_catalog."default" NOT NULL,
-    OKOGY text COLLATE pg_catalog."default" NOT NULL,
-    Address text COLLATE pg_catalog."default" NOT NULL,
-    CurrentRestrictions text COLLATE pg_catalog."default" NOT NULL,
-    RNFI text COLLATE pg_catalog."default" NOT NULL,
-    OfficeFPA text COLLATE pg_catalog."default" NOT NULL,
-    CONSTRAINT land_plots_pkey PRIMARY KEY (NAO)
+    GUID uuid,
+    NAO character varying(255) COLLATE pg_catalog."default",
+    NRH character varying(255) COLLATE pg_catalog."default",
+    NameRH character varying(255) COLLATE pg_catalog."default",
+    NameAO character varying(255) COLLATE pg_catalog."default",
+    LandUseClass character varying(255) COLLATE pg_catalog."default",
+    PermittedUse character varying(255) COLLATE pg_catalog."default",
+    CadastralNumber character varying(255) COLLATE pg_catalog."default",
+    Area double precision,
+    OriginalCostValue double precision,
+    OKOGY character varying(255) COLLATE pg_catalog."default",
+    Address character varying(255) COLLATE pg_catalog."default",
+    CurrentRestrictions character varying(255) COLLATE pg_catalog."default",
+    RNFI character varying(255) COLLATE pg_catalog."default",
+    OfficeFPA character varying(255) COLLATE pg_catalog."default",
+    createdAt timestamp with time zone NOT NULL,
+    updatedAt timestamp with time zone NOT NULL,
+    CONSTRAINT "land_plots_pkey" PRIMARY KEY (NAO)
 )
 WITH (
     OIDS = FALSE
