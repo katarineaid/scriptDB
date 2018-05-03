@@ -23,7 +23,7 @@ CREATE TABLE public.OKS
     OfficeFPA character varying(255) COLLATE pg_catalog."default",
     createdAt timestamp with time zone NOT NULL,
     updatedAt timestamp with time zone NOT NULL,
-    CONSTRAINT OKS PRIMARY KEY (NAO)
+    CONSTRAINT OKS_pkey PRIMARY KEY (NAO)
 )
 
 WITH (
