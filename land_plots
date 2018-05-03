@@ -22,7 +22,7 @@ CREATE TABLE public.land_plots
     CurrentRestrictions text COLLATE pg_catalog."default" NOT NULL,
     RNFI text COLLATE pg_catalog."default" NOT NULL,
     OfficeFPA text COLLATE pg_catalog."default" NOT NULL,
-    CONSTRAINT land_plots PRIMARY KEY (NAO)
+    CONSTRAINT land_plots_pkey PRIMARY KEY (NAO)
 )
 WITH (
     OIDS = FALSE
