@@ -1,0 +1,43 @@
+-- Table: public.land_plots
+
+-- DROP TABLE public.land_plots;
+
+CREATE SEQUENCE land_plots_id_seq;
+CREATE TABLE public.land_plots
+(
+    id integer NOT NULL DEFAULT nextval('land_plots_id_seq'::regclass),
+    geom geometry(Polygon),
+    guid uuid,
+    NAO text COLLATE pg_catalog."default" NOT NULL,
+    NRH text COLLATE pg_catalog."default" NOT NULL,
+    NameRH text COLLATE pg_catalog."default" NOT NULL,
+    NameAO text COLLATE pg_catalog."default" NOT NULL,
+    LandUseClass text COLLATE pg_catalog."default" NOT NULL,
+    PermittedUse text COLLATE pg_catalog."default" NOT NULL,
+    CadastralNumber text COLLATE pg_catalog."default" NOT NULL,
+    Area character varying(255) COLLATE pg_catalog."default" NOT NULL,
+    OriginalCostValue character varying(255) COLLATE pg_catalog."default" NOT NULL,
+    OKOGY text COLLATE pg_catalog."default" NOT NULL,
+    Address text COLLATE pg_catalog."default" NOT NULL,
+    CurrentRestrictions text COLLATE pg_catalog."default" NOT NULL,
+    RNFI text COLLATE pg_catalog."default" NOT NULL,
+    OfficeFPA text COLLATE pg_catalog."default" NOT NULL,
+    CONSTRAINT land_plots PRIMARY KEY (NAO)
+)
+WITH (
+    OIDS = FALSE
+)
+TABLESPACE pg_default;
+
+ALTER TABLE public.land_plots
+    OWNER to postgres;
+
+-- Trigger: guidtrigger
+
+-- DROP TRIGGER guidtrigger ON public.land_plots;
+
+CREATE TRIGGER guidtrigger
+    BEFORE INSERT
+    ON public.land_plots
+    FOR EACH ROW
+    EXECUTE PROCEDURE public."uuidFunction"();
