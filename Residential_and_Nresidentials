@@ -7,7 +7,7 @@ CREATE TABLE public.Residential_and_Nresidentials
 (
     id integer NOT NULL DEFAULT nextval('Residential_and_Nresidentials_id_seq'::regclass),
     geom geometry(Polygon),
-    guid uuid,
+     "GUID" uuid,
     NAO character varying(255) COLLATE pg_catalog."default",
     NRH character varying(255) COLLATE pg_catalog."default",
     NameAO character varying(255) COLLATE pg_catalog."default",
