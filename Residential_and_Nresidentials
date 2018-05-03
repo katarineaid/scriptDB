@@ -23,7 +23,7 @@ CREATE TABLE public.Residential_and_Nresidentials
     OfficeFPA character varying(255) COLLATE pg_catalog."default",
     createdAt timestamp with time zone NOT NULL,
     updatedAt timestamp with time zone NOT NULL,
-    CONSTRAINT Residential_and_Nresidentials PRIMARY KEY (NAO)
+    CONSTRAINT Residential_and_Nresidentials_pkey PRIMARY KEY (NAO)
 )
 WITH (
     OIDS = FALSE
